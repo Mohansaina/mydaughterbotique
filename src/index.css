@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 30 25% 97%;
+    --foreground: 20 10% 15%;
+
+    --card: 30 20% 98%;
+    --card-foreground: 20 10% 15%;
+
+    --popover: 30 20% 98%;
+    --popover-foreground: 20 10% 15%;
+
+    --primary: 350 30% 65%;
+    --primary-foreground: 30 25% 97%;
+
+    --secondary: 30 20% 93%;
+    --secondary-foreground: 20 10% 25%;
+
+    --muted: 30 15% 94%;
+    --muted-foreground: 20 8% 50%;
+
+    --accent: 30 30% 90%;
+    --accent-foreground: 20 10% 20%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 30 15% 88%;
+    --input: 30 15% 88%;
+    --ring: 350 30% 65%;
+
+    --radius: 0.75rem;
+
+    /* Boutique custom tokens */
+    --cream: 35 30% 95%;
+    --beige: 30 20% 90%;
+    --dusty-rose: 350 30% 75%;
+    --warm-brown: 20 15% 35%;
+    --sage: 140 15% 70%;
+    --gold: 38 60% 55%;
+
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'DM Sans', system-ui, sans-serif;
+
+    --shadow-soft: 0 2px 15px -3px hsl(20 15% 35% / 0.08);
+    --shadow-card: 0 4px 20px -5px hsl(20 15% 35% / 0.1);
+    --shadow-hover: 0 8px 30px -5px hsl(20 15% 35% / 0.15);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+  }
+}
+
+@layer components {
+  .boutique-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .product-card {
+    @apply rounded-xl overflow-hidden transition-all duration-300;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .product-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-4px);
+  }
+
+  .btn-boutique {
+    @apply inline-flex items-center justify-center rounded-lg px-8 py-3 text-sm font-medium tracking-wide transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply btn-boutique bg-primary text-primary-foreground hover:opacity-90;
+  }
+
+  .btn-outline {
+    @apply btn-boutique border-2 border-foreground text-foreground hover:bg-foreground hover:text-background;
+  }
+
+  .section-heading {
+    font-family: var(--font-serif);
+    @apply text-3xl md:text-4xl font-medium tracking-tight;
+  }
+
+  .collection-card {
+    @apply relative overflow-hidden rounded-xl cursor-pointer;
+  }
+
+  .collection-card::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-t from-foreground/40 to-transparent transition-opacity duration-300;
+  }
+
+  .collection-card:hover::after {
+    @apply from-foreground/60;
+  }
+
+  .collection-card:hover img {
+    transform: scale(1.05);
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
